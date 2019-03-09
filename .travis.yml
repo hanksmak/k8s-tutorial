@@ -6,6 +6,7 @@ env:
     - SHA=$(git rev-parse HEAD) # This get the sha in latest commit
     - CLOUDSDK_CORE_DISABLE_PROMPTS=1 # Disable all prompts during deployment
 before_install:
+  - gem update --system
   - gem install bundler
   - gem install rake
   - gem install rails
@@ -22,7 +23,7 @@ before_install:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   # - docker build -t stephengrider/react-test -f ./client/Dockerfile.dev ./client/Dockerfile.dev
 
-# script:
+script: 'bundle exec rake spec'
 #   - docker run stephengrider/react-test npm test -- --coverage
 
 deploy:

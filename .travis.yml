@@ -23,7 +23,7 @@ before_install:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   # - docker build -t stephengrider/react-test -f ./client/Dockerfile.dev ./client/Dockerfile.dev
 
-script: 'bundle exec rake spec'
+script: 'ls'
 #   - docker run stephengrider/react-test npm test -- --coverage
 
 deploy:

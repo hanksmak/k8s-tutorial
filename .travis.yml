@@ -28,6 +28,6 @@ script: 'ls'
 
 deploy:
   provider: script
-  script: sh $TRAVIS_BUILD/deploy.sh
+  script: sh ./deploy.sh
   on: 
     branch: master

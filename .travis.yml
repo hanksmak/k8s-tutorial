@@ -13,12 +13,19 @@ before_install:
   - source $HOME/google-cloud-sdk/path.bash.inc
   - gcloud components update kubectl
   - gcloud auth activate-service-account --key-file service-account.json
+### If you have to ever run/create different cluster, you have to run this command
   - gcloud config set project k8s-tutorial-233417
   - gcloud config set compute/zone asia-east2-a	
   - gcloud container clusters get-credentials multi-cluster
+####
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  # - docker build -t stephengrider/react-test -f ./client/Dockerfile.dev ./client/Dockerfile.dev
+
+# script:
+#   - docker run stephengrider/react-test npm test -- --coverage
+
 deploy:
   provider: script
-  script: bash ./deploy.sh
+  script: ./deploy.sh
   on: 
     branch: master

@@ -23,7 +23,7 @@ before_install:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   # - docker build -t stephengrider/react-test -f ./client/Dockerfile.dev ./client/Dockerfile.dev
 
-script: 'ls'
+script: 'pwd'
 #   - docker run stephengrider/react-test npm test -- --coverage
 
 deploy:

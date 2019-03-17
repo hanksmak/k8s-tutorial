@@ -9,6 +9,8 @@ docker push hanksmak/multi-server:$SHA
 docker push hanksmak/multi-worker:latest
 docker push hanksmak/multi-worker:$SHA
 
+# This is needed to create issuer and cert
+kubectl apply -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.6/deploy/manifests/00-crds.yaml
 kubectl apply -f k8s
 kubectl set image deployments/server-deployment server=hanksmak/multi-server:$SHA
 kubectl set image deployments/client-deployment client=hanksmak/multi-client:$SHA
